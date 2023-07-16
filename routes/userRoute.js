@@ -8,12 +8,18 @@ const BlackListModel = require("../models/blackListModel")
 const userRouter = express.Router()
 
 
+userRouter.get("/",(req,res)=>{
+    res.send("Hello Users")
+})
+
 userRouter.post("/register",register,async(req,res)=>{
     try {
+
         const {email,password} = req.body
         const newpassword = await bcrypt.hash(password,10)
         const user = await UserModel.create({...req.body,password:newpassword})
         res.status(200).send({"msg":"User Registered Successfully",user})
+       
         return
     } catch (error) {
         res.status(400).send({"errormsg":error.message})
