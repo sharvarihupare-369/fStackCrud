@@ -7,7 +7,7 @@ const userSchema  = new mongoose.Schema({
      password:{type:String,required:true},
      age:{type:Number,required:true},
      city:{type:String,required:true},
-     is_married:{type:Boolean,required:true},
+     is_married:{type:Boolean},
 })
 
 const UserModel = mongoose.model("user",userSchema)
